@@ -1,0 +1,207 @@
+/* Interactive Roller Derby track by Wonder Zebra (Vienna Rollergirls)
+   April 2013 - February 2015
+   Please send your requests and suggestions to wonderzbra@gmail.com
+
+   This work is available under the GNU General Public License v3, which can
+   be found at http://www.gnu.org/licenses/gpl-3.0.txt
+
+   This means you can use it, modify it and redistribute it as long as you
+   also provide the source code of the provided software and of any
+   derivative work based on it, and as long as you cite the original authors
+   of the program (copyright information). Other restrictions apply.
+   The most important restriction is that you cannot distribute proprietay
+   software based on the provided programs and libraries.
+*/
+
+html {
+    height: 100%;
+}
+
+body {
+    position: absolute;
+    height: 100%;
+    margin: 0;
+    z-index: 0;
+    border: none;
+    left: 0%;
+    top: 0%;
+    width: 100%;
+    height: 100%;
+}
+
+svg {
+    /* only works when svg is inlined in html - used for debugging */
+    /* outline: 2px solid #f00; */
+    background: white;
+    /* background: rgba(180,20,20,.2); */
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+path.track {
+    stroke: #1234bb;
+    fill: orange;
+    fill-opacity: 0;
+    stroke-width: 4;
+    fill-rule: evenodd;
+}
+
+path.virtualDistanceLine {
+    stroke: #00ff00;
+    fill: none;
+    stroke-width: 1.4;
+    stroke-dasharray: 5,3
+}
+
+.blockerNumber {
+    font-size: 14px;
+    font-weight: bold;
+    dominant-baseline: central;
+    text-anchor: middle;
+    fill: white;
+}
+
+.invisible {
+    /* font-size: 0px; */
+    display: none;
+}
+
+.mark {
+    stroke: #aaaaaa;
+    fill: none;
+    stroke-width: 1.5;
+}
+
+.engagementZone {
+    fill: #ffff00;
+    /* stroke: #ffbb00; */
+    fill-opacity: 0.4;
+    /* stroke-width: 1.5; */
+}
+
+.skater {
+    stroke-width: 4;
+}
+
+.player {
+    fill: white;
+}    
+
+.pivot,.jammer,.blocker,.zebra {
+    stroke-width: 0;
+}
+
+.teamA {
+    stroke: #ffbb00; /* colour for team A */
+    fill: #ffbb00; /* colour for team A */
+}
+
+.teamB {
+    stroke: #bb00bb; /* colour for team B */
+    fill: #bb00bb; /* colour for team B */
+}
+
+.OOB {
+    stroke: red;
+}
+
+.pack {
+    stroke: limegreen;
+}
+
+.OOP {
+    stroke: black;
+}
+
+.down {
+    stroke: darkred;
+}
+
+.movable {
+    cursor: move;
+}
+
+.nopack {
+    stroke: lightsteelblue;
+}
+
+.zebra {
+    stroke: black;
+}
+
+.JRStar {
+    stroke: black;
+    stroke-width: .2;
+}
+
+.recButton {
+    stroke: red;
+    fill: red;
+}
+
+.selected {
+    /* fill: grey; */
+    fill-opacity: .4;
+}
+
+.selection {
+    stroke: grey;
+    fill-opacity: 0.2;
+    stroke-width: 1;
+}
+
+.HUD {
+    position: absolute;
+    padding: 10px 10px 10px 10px;
+    margin: 10px 10px 10px 10px;
+    border-radius: 10px 10px 10px 10px;
+    background: rgba(0, 0, 0, 0.7);
+    border-style: outset;
+    color: white;
+    visibility: hidden;
+    z-index: 1;
+    /* max-height: 100%; */
+    /* max-height: 280px; */
+    cursor: default;
+}
+
+.HUDcontent {
+    max-height: 400px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.alignRight {
+    text-align: right;
+    align: right;
+}
+
+.leftBound {
+    left: 0;
+}
+
+.rightBound {
+    right: 0;
+}
+
+.bottomBound {
+    bottom: 0;
+}
+
+.startHUD {
+    position: absolute;
+    padding: 10px 10px 10px 10px;
+    margin: 10px 10px 10px 10px;
+    border-radius: 10px 10px 10px 10px;
+    z-index: 1;
+}
+
+.noSelection {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}

@@ -1,0 +1,22 @@
+CACHE MANIFEST
+# 2017-07-21
+
+index.html
+manual.txt
+urdumb.html
+urdumb.css
+scripts/classops.js
+scripts/dump.js
+scripts/fullscreen.js
+scripts/globals.js
+scripts/interaction.js
+scripts/keys.js
+scripts/math.js
+scripts/menu.js
+scripts/motion.js
+scripts/persistence.js
+scripts/popupcontrols.js
+scripts/positions.js
+scripts/sethtmldoc.js
+scripts/storage.js
+scripts/touch.js

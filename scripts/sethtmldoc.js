@@ -1,0 +1,1 @@
+docType='html5';
