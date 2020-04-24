@@ -44,7 +44,7 @@ var trackSW = parseInt(window.getComputedStyle(element).
 var smallR2 = Math.pow(125 - trackSW/2.0 + skaterR, 2);
 // value for the outer circle
 var bigR2 = Math.pow(265 + trackSW/2.0 - skaterR, 2);
-// slope and y-intersect for the upper and lower lines
+// slope and y-intercept for the upper and lower lines
 var lineA = -20.0/350;
 var upperLineB = - lineA * 615;
 var lowerLineB = 550 - lineA * 265;
