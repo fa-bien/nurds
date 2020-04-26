@@ -1,0 +1,2 @@
+- export to URL with parameters containing situational information
+  like skater positions
