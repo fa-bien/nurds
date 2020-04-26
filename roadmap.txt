@@ -1,2 +1,3 @@
+- move from ApplicationCache to Serviceworkers
 - export to URL with parameters containing situational information
   like skater positions
