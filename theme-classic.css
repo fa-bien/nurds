@@ -1,5 +1,5 @@
-/* Interactive Roller Derby track by Wonder Zebra (Vienna Rollergirls)
-   April 2013 - February 2015
+/* Interactive Roller Derby track by Wonder Zebra (Vienna Roller Derby)
+   April 2013 - April 2020
    Please send your requests and suggestions to wonderzbra@gmail.com
 
    This work is available under the GNU General Public License v3, which can
@@ -36,10 +36,7 @@ body {
 }
 
 svg {
-    /* only works when svg is inlined in html - used for debugging */
-    /* outline: 2px solid #f00; */
     background: white;
-    /* background: rgba(180,20,20,.2); */
     display: block;
     width: 100%;
     height: 100%;
