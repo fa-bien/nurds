@@ -35,7 +35,7 @@ var selectionRectangle = document.getElementById('selectionRectangle');
 var background = document.getElementById('background');
 // how far the visual border of the skater is from its center, squared
 var skaterR = skaterSize + skaterSW/2.0;
-var element = document.getElementById('track');
+var element = document.getElementById('trackBoundary');
 var trackSW = parseInt(window.getComputedStyle(element).
                        getPropertyValue('stroke-width'));
 // radiuses used for OOB detection, taking into account visual elements such as
@@ -78,7 +78,7 @@ var refSpeed = 10;
 // at which distance from the jammer is the JR close enough
 var refCloseEnough = 0;
 // ugly but necessary
-var ZERO = .00001;
+const ZERO = .00001;
 // are we recording a script?
 var recording = false;
 
@@ -97,7 +97,8 @@ defaultConfig = {
     'showmiddleline': false,
     'showzebras': true,
     'teamAcolour': "#ffbb00",
-    'teamBcolour': "#bb00bb"
+    'teamBcolour': "#bb00bb",
+    'theme': 'classic',
 }
 
 config = {};

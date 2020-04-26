@@ -5,6 +5,9 @@
   <head>
     <title>URDUMB</title>
     <link rel="stylesheet" href="theme-classic.css" />
+    <link rel="stylesheet" href="theme-accessible-1.css" />
+    <link rel="stylesheet" href="theme-funky.css" />
+    <link rel="stylesheet" href="theme-night.css" />
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
   </head>
   
@@ -84,6 +87,9 @@
           <br />
           <input type="color" id="button-colour-teamB" /> Team B colour
           <br />
+          Theme
+          <select id="select-theme">
+          </select>
         </div>
       </fieldset>      
     </div>
@@ -136,109 +142,110 @@
       <!-- normal box is 0 0 880 550 but we want some padding -->
 
       <defs>
+        <!-- (0,0) is the top left corner; track centre is at (440, 275) -->
+        <path id="trackpath"
+              d="
+                 M 265,550
+                 L 615,530
+                 A 265,265 0 1,0 615,0
+                 L 265,20
+                 A 265,265 0 1,0 265,550
+                 M 265,400
+                 L 615,400
+                 A 125,125 0 1,0 615,150
+                 L 265,150
+                 A 125,125 0 1,0 265,400
+                 "
+              />
         <circle id="skater" class="skater"
                 cx="0" cy="0" r="13"
                 />
-        <!-- <circle id="skaterSelection" class="selection" -->
-                     <!--         cx="0" cy="0" r="13" /> -->
-                     <g id="player" class="player">
-                       <use xlink:href="#skater" x="0" y="0" />
-                     </g>
-                     <rect id="pivotStripe"
-                           x="-11" y="-4" width="22" height="8" rx="3" ry="3" />
-                     <circle id="blockerMark" cx="0" cy="0" r="8" />
-                     <polygon id="star"
-                              points="-0.0, 2.5
-                                      -0.5877852522924731, 0.8090169943749475
-                                      -2.3776412907378837, 0.7725424859373686
-                                      -0.9510565162951536, -0.30901699437494734
-                                      -1.4694631307311832, -2.022542485937368
-                                      0, -1.0
-                                      1.4694631307311825, -2.0225424859373686
-                                      0.9510565162951535, -0.30901699437494756
-                                      2.377641290737884, 0.7725424859373681
-                                      0.5877852522924732, 0.8090169943749473"
-                              transform="scale(4), rotate(180)"
-                              />
-                     <g id="blocker" class="blockerTemplate">
-                       <use xlink:href="#player" x="0" y="0" />
-                       <use xlink:href="#blockerMark" x="0" y="0" />
-                     </g>
-                     <g id="blocker1" class="blockerTemplate1">
-                       <use xlink:href="#blocker" x="0" y="0" />
-                       <text id="blockerNumber1" class="blockerNumber">1</text>
-                     </g>
-                     <g id="blocker2" class="blockerTemplate2">
-                       <use xlink:href="#blocker" x="0" y="0" />
-                       <text id="blockerNumber2" class="blockerNumber">2</text>
-                     </g>
-                     <g id="blocker3" class="blockerTemplate3">
-                       <use xlink:href="#blocker" x="0" y="0" />
-                       <text id="blockerNumber3" class="blockerNumber">3</text>
-                     </g>
-                     <g id="pivot" class="pivotTemplate">
-                       <use xlink:href="#player" x="0" y="0" />
-                       <use xlink:href="#pivotStripe" x="0" y="0" />
-                     </g>
-                     <g id="jammer" class="jammerTemplate">
-                       <use xlink:href="#player" x="0" y="0" />
-                       <use xlink:href="#star" x="0" y="0" />
-                     </g>
-                     <pattern id="refStripes" patternUnits="userSpaceOnUse"
-                              x="0" y="0" width="2" height="1"
-                              patternTransform="translate(1.5, 0), scale(3.4), rotate(0, 0, 0)">
-                       <rect x="0" y="0" width="1" height="1" fill="black" />
-                       <rect x="1" y="0" width="1" height="1" fill="white" />
-                     </pattern>
-                     
-                     <g id="packRef" >
-                       <use xlink:href="#skater" x="0" y="0" fill="url(#refStripes)" />
-                     </g>
-                     <g id="jammerRef">
-                       <use xlink:href="#packRef" x="0" y="0" />
-                       <use xlink:href="#star" x="0" y="0" class="JRStar"/>
-                     </g>
-                     <line x1="0" y1="-35" x2="0" y2="-105" id="tenFootMark" />
+        <g id="player" class="player">
+          <use xlink:href="#skater" x="0" y="0" />
+        </g>
+        <rect id="pivotStripe"
+              x="-11" y="-4" width="22" height="8" rx="3" ry="3" />
+        <circle id="blockerMark" cx="0" cy="0" r="8" />
+        <polygon id="star"
+                 points="-0.0, 2.5
+                         -0.5877852522924731, 0.8090169943749475
+                         -2.3776412907378837, 0.7725424859373686
+                         -0.9510565162951536, -0.30901699437494734
+                         -1.4694631307311832, -2.022542485937368
+                         0, -1.0
+                         1.4694631307311825, -2.0225424859373686
+                         0.9510565162951535, -0.30901699437494756
+                         2.377641290737884, 0.7725424859373681
+                         0.5877852522924732, 0.8090169943749473"
+                 transform="scale(4), rotate(180)"
+                 />
+        <g id="blocker" class="blockerTemplate">
+          <use xlink:href="#player" x="0" y="0" />
+          <use xlink:href="#blockerMark" x="0" y="0" />
+        </g>
+        <g id="blocker1" class="blockerTemplate1">
+          <use xlink:href="#blocker" x="0" y="0" />
+          <text id="blockerNumber1" class="blockerNumber">1</text>
+        </g>
+        <g id="blocker2" class="blockerTemplate2">
+          <use xlink:href="#blocker" x="0" y="0" />
+          <text id="blockerNumber2" class="blockerNumber">2</text>
+        </g>
+        <g id="blocker3" class="blockerTemplate3">
+          <use xlink:href="#blocker" x="0" y="0" />
+          <text id="blockerNumber3" class="blockerNumber">3</text>
+        </g>
+        <g id="pivot" class="pivotTemplate">
+          <use xlink:href="#player" x="0" y="0" />
+          <use xlink:href="#pivotStripe" x="0" y="0" />
+        </g>
+        <g id="jammer" class="jammerTemplate">
+          <use xlink:href="#player" x="0" y="0" />
+          <use xlink:href="#star" x="0" y="0" />
+        </g>
+        <pattern id="refStripes" patternUnits="userSpaceOnUse"
+                 x="0" y="0" width="2" height="1"
+                 patternTransform="translate(1.5, 0), scale(3.4), rotate(0, 0, 0)">
+          <rect x="0" y="0" width="1" height="1" fill="black" />
+          <rect x="1" y="0" width="1" height="1" fill="white" />
+        </pattern>
+        
+        <g id="packRef" >
+          <use xlink:href="#skater" x="0" y="0" fill="url(#refStripes)" />
+        </g>
+        <g id="jammerRef">
+          <use xlink:href="#packRef" x="0" y="0" />
+          <use xlink:href="#star" x="0" y="0" class="JRStar"/>
+        </g>
+        <line x1="0" y1="-35" x2="0" y2="-105" id="tenFootMark" />
       </defs>
 
       <text id="contextText" x="50" y="50" font-size="50" class="invisible">
         hop
       </text>
       
+      <use xlink:href="#trackpath" id="trackBackground" class="trackBackground"
+           x="0" y="0" />
       <path class="engagementZone" id="engagementZone"
             d="
                M 0,0
                "
-            />
-      
-      <path class="track" id="pivotLine"
+            />      
+      <path class="trackBoundary" id="pivotLine"
             d="
                M 265,150
                L 265,20
                "
             />
-      <path class="track" id="jammerLine"
+      <path class="trackBoundary" id="jammerLine"
             d="
                M 565,150
                L 565,4
                "
             />
-      <!-- (0,0) is the top left corner; track centre is at (440, 275) -->
-      <path class="track" id="track"
-            d="
-               M 265,550
-               L 615,530
-               A 265,265 0 1,0 615,0
-               L 265,20
-               A 265,265 0 1,0 265,550
-               M 265,400
-               L 615,400
-               A 125,125 0 1,0 615,150
-               L 265,150
-               A 125,125 0 1,0 265,400
-               "
-            />
-
+      <use xlink:href="#trackpath" id="trackBoundary" class="trackBoundary"
+           x="0" y="0" />
+                 
       <g id="tenFootMarks" class="mark">
         <!-- first straightaway -->
         <use xlink:href="#tenFootMark" class="mark" x="365" y="150" />
@@ -358,7 +365,11 @@
       </circle>
 
       <rect id="selectionRectangle" class="selection invisible"
-            x="0" y="0" width="300" height="200" />    
+            x="0" y="0" width="300" height="200" />
+
+      <!-- invisible object to store theme extra properties -->
+      <rec id="theme-extras" class="theme-extras"
+           x="0" y="0" width="0" height="0" />
 
     </svg>
 

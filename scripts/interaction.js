@@ -49,11 +49,10 @@ function updateMiddleLine() {
 
 function updateTeamColours() {
     for (var i=0; i < document.styleSheets.length; i++) {
+        if (document.styleSheets[i].disabled) continue;
         var str = document.styleSheets[i].href;
-        if (str && str.length >= 10 &&
-	    str.substr(str.length-10) == 'urdumb.css') {
+        if (str) {
             var rules = document.styleSheets[i].cssRules;
-	    var alreadySet = 0;
             for (var j=0; j < rules.length; j++) {
 		if (rules[j].selectorText.substr(0, 5) == '.team') {
 		    var suffix = rules[j].selectorText[5];
@@ -62,15 +61,10 @@ function updateTeamColours() {
 			+ '; fill: ' + colour + '; }'
 		    document.styleSheets[i].deleteRule(j);
 		    document.styleSheets[i].insertRule(newRule, j);
-		    alreadySet += 1;
-		}
-		if (alreadySet == 2) {
-		    return;
 		}
 	    }
         }
     }
-    console.log("Could not find correct style sheet and/or class!");
 }
 
 function addAllListeners() {
@@ -118,7 +112,8 @@ function initialise() {
     updateZebras();
     addAllListeners();
     checkPositions();
-    updateTeamColours();
+    // updateTeamColours(); NOW DONE WHEN SETTING A THEME
+    //
     // // start a new history if there isn't already one
     // if (positionHistory.length == 0) {
     //     // store initial position in history

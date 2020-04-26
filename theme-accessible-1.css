@@ -1,6 +1,8 @@
-/* Interactive Roller Derby track by Wonder Zebra (Vienna Rollergirls)
-   April 2013 - February 2015
+/* URDUMB by Wonder Zebra (Vienna Roller Derby)
    Please send your requests and suggestions to wonderzbra@gmail.com
+
+   This stylesheet is mostly by Short Circuit and <insert skater name here>.
+   Adapted to theming system by Wonder Zebra.
 
    This work is available under the GNU General Public License v3, which can
    be found at http://www.gnu.org/licenses/gpl-3.0.txt
@@ -27,23 +29,46 @@ body {
     top: 0%;
     width: 100%;
     height: 100%;
+    font-size: 100%;
+    font-family: sans-serif;
+    /* custom URDUMB values */
+    --pivot-stripe-height: 8;
+    --skater-radius: 13;
+    --jersey-radius: 11;
+    --skater-contour-width: 4;
+    --preferred-team-A-colour: white;
+    --preferred-team-B-colour: black;
+}
+
+input {
+    background-color: #1234bb;
+    color: white;
+    padding: 5px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 100%;
 }
 
 svg {
-    /* only works when svg is inlined in html - used for debugging */
-    /* outline: 2px solid #f00; */
-    background: white;
-    /* background: rgba(180,20,20,.2); */
+    background: rgba(127,140,206,1);
     display: block;
     width: 100%;
     height: 100%;
 }
 
-path.track {
-    stroke: #1234bb;
-    fill: orange;
-    fill-opacity: 0;
-    stroke-width: 4;
+.trackBoundary {
+    stroke: white;
+    fill: none;
+    fill-opacity: 1;
+    stroke-width: 3;
+}
+
+
+.trackBackground {
+    stroke: none;
+    fill: #727db8;
+    fill-opacity: 1;
     fill-rule: evenodd;
 }
 
@@ -59,7 +84,7 @@ path.virtualDistanceLine {
     font-weight: bold;
     dominant-baseline: central;
     text-anchor: middle;
-    fill: white;
+    fill: grey;
 }
 
 .invisible {
@@ -68,16 +93,15 @@ path.virtualDistanceLine {
 }
 
 .mark {
-    stroke: #aaaaaa;
+    stroke: white;
     fill: none;
     stroke-width: 1.5;
 }
 
 .engagementZone {
-    fill: #ffff00;
-    /* stroke: #ffbb00; */
-    fill-opacity: 0.4;
-    /* stroke-width: 1.5; */
+    fill: #ff8300;
+    stroke: none;
+    fill-opacity: 1;
 }
 
 .skater {
@@ -85,7 +109,7 @@ path.virtualDistanceLine {
 }
 
 .player {
-    fill: white;
+    fill: grey;
 }    
 
 .pivot,.jammer,.blocker,.zebra {
@@ -93,13 +117,13 @@ path.virtualDistanceLine {
 }
 
 .teamA {
-    stroke: #ffbb00; /* colour for team A */
-    fill: #ffbb00; /* colour for team A */
+    stroke: #000000; /* colour for team A */
+    fill: #000000; /* colour for team A */
 }
 
 .teamB {
-    stroke: #bb00bb; /* colour for team B */
-    fill: #bb00bb; /* colour for team B */
+    stroke: #ffffff; /* colour for team B */
+    fill: #ffffff; /* colour for team B */
 }
 
 .OOB {
@@ -107,7 +131,7 @@ path.virtualDistanceLine {
 }
 
 .pack {
-    stroke: limegreen;
+    stroke: #1234bb;
 }
 
 .OOP {

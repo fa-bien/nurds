@@ -30,23 +30,20 @@ body {
     /* custom URDUMB values */
     --pivot-stripe-height: 8;
     --skater-radius: 13;
-    --jersey-radius: 8;
-    --preferred-team-A-colour: #ffbb00;
-    --preferred-team-B-colour: #bb00bb;
+    --jersey-radius: 9;
+    --preferred-team-A-colour: orange;
+    --preferred-team-B-colour: darkturquoise;
 }
 
 svg {
-    /* only works when svg is inlined in html - used for debugging */
-    /* outline: 2px solid #f00; */
-    background: white;
-    /* background: rgba(180,20,20,.2); */
+    background: black;
     display: block;
     width: 100%;
     height: 100%;
 }
 
 .trackBoundary {
-    stroke: #1234bb;
+    stroke: #cccccc;
     fill: orange;
     fill-opacity: 0;
     stroke-width: 4;
@@ -55,8 +52,8 @@ svg {
 
 .trackBackground {
     stroke: none;
-    fill: orange;
-    fill-opacity: 0;
+    fill: #222222;
+    fill-opacity: 1;
     stroke-width: 0;
     fill-rule: evenodd;
 }
@@ -69,11 +66,12 @@ path.virtualDistanceLine {
 }
 
 .blockerNumber {
+    font-family: Arial;
     font-size: 14px;
     font-weight: bold;
     dominant-baseline: central;
     text-anchor: middle;
-    fill: white;
+    fill: black;
 }
 
 .invisible {
@@ -88,7 +86,7 @@ path.virtualDistanceLine {
 }
 
 .engagementZone {
-    fill: #ffff00;
+    fill: #ffaaaa;
     stroke: none;
     fill-opacity: 0.4;
 }
@@ -98,7 +96,7 @@ path.virtualDistanceLine {
 }
 
 .player {
-    fill: white;
+    fill: black;
 }    
 
 .pivot,.jammer,.blocker,.zebra {
@@ -124,7 +122,7 @@ path.virtualDistanceLine {
 }
 
 .OOP {
-    stroke: black;
+    stroke: white;
 }
 
 .down {
@@ -140,7 +138,7 @@ path.virtualDistanceLine {
 }
 
 .zebra {
-    stroke: black;
+    stroke: #dddddd;
 }
 
 .JRStar {

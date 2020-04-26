@@ -28,11 +28,11 @@ body {
     width: 100%;
     height: 100%;
     /* custom URDUMB values */
-    --pivot-stripe-height: 8;
-    --skater-radius: 13;
-    --jersey-radius: 8;
-    --preferred-team-A-colour: #ffbb00;
-    --preferred-team-B-colour: #bb00bb;
+    --pivot-stripe-height: 14;
+    --skater-radius: 16;
+    --jersey-radius: 13;
+    --preferred-team-A-colour: hotpink;
+    --preferred-team-B-colour: orange;
 }
 
 svg {
@@ -46,17 +46,17 @@ svg {
 }
 
 .trackBoundary {
-    stroke: #1234bb;
-    fill: orange;
+    stroke: mediumorchid;
+    fill: none;
     fill-opacity: 0;
-    stroke-width: 4;
+    stroke-width: 6;
     fill-rule: evenodd;
 }
 
 .trackBackground {
     stroke: none;
-    fill: orange;
-    fill-opacity: 0;
+    fill: cyan;
+    fill-opacity: 0.2;
     stroke-width: 0;
     fill-rule: evenodd;
 }
@@ -88,13 +88,13 @@ path.virtualDistanceLine {
 }
 
 .engagementZone {
-    fill: #ffff00;
+    fill: #00ff00;
     stroke: none;
     fill-opacity: 0.4;
 }
 
 .skater {
-    stroke-width: 4;
+    stroke-width: 6;
 }
 
 .player {

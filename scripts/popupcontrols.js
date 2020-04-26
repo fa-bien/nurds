@@ -144,6 +144,11 @@ function addOverlayListeners() {
     colourB.addEventListener('input', function(evt) {
         setTeamColour('teamB', colourB.value);
     } );
+    // theme selection
+    var ts = document.getElementById('select-theme');
+    ts.addEventListener('input', function(evt) {
+        setTheme(ts.value);
+    } );
 
     // GUI display
     document.getElementById('hidePopupGUIButton').

@@ -28,35 +28,32 @@ body {
     width: 100%;
     height: 100%;
     /* custom URDUMB values */
-    --pivot-stripe-height: 8;
-    --skater-radius: 13;
-    --jersey-radius: 8;
-    --preferred-team-A-colour: #ffbb00;
-    --preferred-team-B-colour: #bb00bb;
+    --pivot-stripe-height: 14;
+    --skater-radius: 16;
+    --jersey-radius: 12;
+    --preferred-team-A-colour: hotpink;
+    --preferred-team-B-colour: orange;
 }
 
 svg {
-    /* only works when svg is inlined in html - used for debugging */
-    /* outline: 2px solid #f00; */
-    background: white;
-    /* background: rgba(180,20,20,.2); */
+    background: #ffff99;
     display: block;
     width: 100%;
     height: 100%;
 }
 
 .trackBoundary {
-    stroke: #1234bb;
-    fill: orange;
+    stroke: mediumorchid;
+    fill: none;
     fill-opacity: 0;
-    stroke-width: 4;
+    stroke-width: 8;
     fill-rule: evenodd;
 }
 
 .trackBackground {
     stroke: none;
-    fill: orange;
-    fill-opacity: 0;
+    fill: cyan;
+    fill-opacity: 0.2;
     stroke-width: 0;
     fill-rule: evenodd;
 }
@@ -69,6 +66,7 @@ path.virtualDistanceLine {
 }
 
 .blockerNumber {
+    font-family: "Verdana";
     font-size: 14px;
     font-weight: bold;
     dominant-baseline: central;
@@ -82,19 +80,19 @@ path.virtualDistanceLine {
 }
 
 .mark {
-    stroke: #aaaaaa;
+    stroke: mediumorchid;
     fill: none;
     stroke-width: 1.5;
 }
 
 .engagementZone {
-    fill: #ffff00;
+    fill: #00ff00;
     stroke: none;
     fill-opacity: 0.4;
 }
 
 .skater {
-    stroke-width: 4;
+    stroke-width: 6;
 }
 
 .player {
