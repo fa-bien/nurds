@@ -48,7 +48,10 @@ function trackWidth(mu) {
         // case 2: first curve
     } else if ( mu <= straightawayLength + halfCircleLength ) {
         var ratio = (mu - straightawayLength) / halfCircleLength;
-        return 130 + ratio * 20;
+        // good approximation of the real calculation...
+        return 130 + (ratio + 0.11* Math.sin(Math.PI + ratio * 2 * Math.PI)) * 20;
+        // faster but worse approximation
+        // return 130 + ratio * 20;
         // case 3: second straightaway
     } else if ( mu <= 2 * straightawayLength + halfCircleLength ) {
         return 150 - 20 * (mu - straightawayLength - halfCircleLength)
@@ -56,7 +59,8 @@ function trackWidth(mu) {
     } else { // last case: second curve
         var ratio = (mu - 2 * straightawayLength - halfCircleLength)
             / halfCircleLength;
-        return 130 + ratio * 20;
+        return 130 + (ratio + 0.11* Math.sin(Math.PI + ratio * 2 * Math.PI)) * 20;
+        // return 130 + ratio * 20;
     }
 }
 
