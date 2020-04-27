@@ -131,6 +131,7 @@ path.virtualDistanceLine {
 
 .down {
     stroke: darkred;
+    stroke-dasharray: 7 3;
 }
 
 .movable {
