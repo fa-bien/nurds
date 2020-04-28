@@ -86,8 +86,9 @@ path.virtualDistanceLine {
 }
 
 .mark {
-    stroke: green;
+    stroke: var(--tape-colour);
     fill: none;
+    opacity: 0.6;
     stroke-width: 1.5;
 }
 
