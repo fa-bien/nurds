@@ -31,12 +31,14 @@ body {
     --pivot-stripe-height: 10;
     --skater-radius: 13;
     --jersey-radius: 10;
-    --preferred-team-A-colour: #2B5290;
-    --preferred-team-B-colour: #EC14D5;
+    --preferred-team-A-colour: #3331A8;
+    --preferred-team-B-colour: #FF9400;
+    /* used in multiple places */
+    --tape-colour: white;
 }
 
 svg {
-    background: url(basketball.svg);
+    background: url(sportflaechen_blue.svg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position-x: center;
@@ -48,10 +50,10 @@ svg {
 }
 
 .trackBoundary {
-    stroke: green;
+    stroke: var(--tape-colour);
     fill: orange;
     fill-opacity: 0;
-    stroke-width: 4;
+    stroke-width: 2;
     fill-rule: evenodd;
 }
 
@@ -122,7 +124,7 @@ path.virtualDistanceLine {
 }
 
 .pack {
-    stroke: limegreen;
+    stroke: green;
 }
 
 .OOP {
