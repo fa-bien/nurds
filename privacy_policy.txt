@@ -1,0 +1,7 @@
+The only data stored by URDUMB are the ones willingly provided by
+the user and necessary to the functioning of the app. Exhaustive list:
+visual preferences, skater positions.
+
+The URDUMB app does not communicate outside of your device. The data
+necessary so that the app functions, as enumerated above, is not
+communicated outside of your device.
