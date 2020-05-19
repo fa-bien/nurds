@@ -10,3 +10,8 @@ Things you need to know before designing your own theme:
   CSS variables --preferred-team-A-colour and
   --preferred-team-B-colour. The user can still change colours after
   loading the theme.
+* Do not use CSS variables for other reasons: when dumping the current
+  scene to an SVG, CSS variables will be ignored by current browsers.
+* If you use pictures, either include a full URL or embed the whole
+  picture in the CSS. Otherwise it will not be exported when dumping
+  to SVG.
