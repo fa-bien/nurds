@@ -80,6 +80,7 @@ path.virtualDistanceLine {
 }
 
 .blockerNumber {
+    user-select: none;
     /* must be specified here to function when exporting files */
     font-family: sans-serif;
     font-size: 14px;

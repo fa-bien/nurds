@@ -44,7 +44,7 @@ function setThemeExtra() {
     ps.setAttribute('height', psh);
     ps.setAttribute('width', 2 * skaterSize - skaterSW);
     ps.setAttribute('rx', psh/2-1);
-    ps.setAttribute('ry',psh/2-1);
+    ps.setAttribute('ry', psh/2-1);
 }
 
 // converts a *string* in 'rgb(a, b, c)' format to a hex string

@@ -66,6 +66,7 @@ path.virtualDistanceLine {
 }
 
 .blockerNumber {
+    user-select: none;
     font-size: 14px;
     font-weight: bold;
     dominant-baseline: central;

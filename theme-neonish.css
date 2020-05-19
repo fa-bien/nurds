@@ -73,6 +73,7 @@ path.virtualDistanceLine {
 }
 
 .blockerNumber {
+    user-select: none;
     font-family: Arial;
     font-size: 14px;
     font-weight: bold;
