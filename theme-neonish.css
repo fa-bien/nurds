@@ -34,7 +34,6 @@ body {
     --jersey-radius: 10;
     --preferred-team-A-colour: #007aff;
     --preferred-team-B-colour: #fd710c;
-    --tape-color: deeppink;
 }
 
 input {
@@ -51,7 +50,7 @@ svg {
 }
 
 .trackBoundary {
-    stroke: var(--tape-color);
+    stroke: deeppink;
     fill: orange;
     fill-opacity: 0;
     stroke-width: 6;
@@ -88,7 +87,7 @@ path.virtualDistanceLine {
 }
 
 .mark {
-    stroke: var(--tape-color);
+    stroke: deeppink;
     fill: none;
     stroke-width: 1.5;
 }

@@ -33,12 +33,11 @@ body {
     --jersey-radius: 10;
     --preferred-team-A-colour: #3331A8;
     --preferred-team-B-colour: #FF9400;
-    /* used in multiple places */
-    --tape-colour: white;
 }
 
 svg {
-    background: url(sportflaechen_blue.svg);
+    /* full url needed so that file dump functions */
+    background: url(https://nurds.space/sportflaechen_blue.svg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position-x: center;
@@ -50,7 +49,7 @@ svg {
 }
 
 .trackBoundary {
-    stroke: var(--tape-colour);
+    stroke: white;
     fill: orange;
     fill-opacity: 0;
     stroke-width: 2;
@@ -86,7 +85,7 @@ path.virtualDistanceLine {
 }
 
 .mark {
-    stroke: var(--tape-colour);
+    stroke: white;
     fill: none;
     opacity: 0.6;
     stroke-width: 1.5;

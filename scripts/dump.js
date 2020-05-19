@@ -21,8 +21,7 @@ function svgFileContent() {
         if (str.endsWith('theme-' + config['theme'] + '.css') ) {
             var rules = document.styleSheets[i].cssRules;
             for (var j=0; j < rules.length; j++) {
-                if (rules[j].cssText.substr(0, 8) !=
-                    '.movable') {
+                if (rules[j].cssText.substr(0, 8) != '.movable') {
                     style.textContent += (rules[j].cssText + ' \n');
                 }
             }
