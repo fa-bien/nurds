@@ -13,12 +13,12 @@ function svgFileContent() {
     var style = document.createElementNS(svg.ns, "style");
     style.textContent += '<![CDATA[' + '\n';
     // get stylesheet for svg
-    // all styles are in urdumb.css
+    // all styles are in kthe currently loaded theme
     // very much inspired from an answer at
     // http://code.google.com/p/canvg/issues/detail?id=143
     for (var i=0; i < document.styleSheets.length; i++) {
         var str = document.styleSheets[i].href;
-        if (str.substr(str.length-10) == 'urdumb.css') {
+        if (str.endsWith('theme-' + config['theme'] + '.css') ) {
             var rules = document.styleSheets[i].cssRules;
             for (var j=0; j < rules.length; j++) {
                 if (rules[j].cssText.substr(0, 8) !=
@@ -93,12 +93,12 @@ function saveSvgContent(content, name) {
 }
 
 function dumpStatic() {
-    saveSvgContent(svgFileContent(), 'urdumb-static.svg')
+    saveSvgContent(svgFileContent(), 'nurds-static.svg')
 }
 
 function dumpScript() {
     content = svgFileContent()
     animation = createAnimation(frames);
     content = content.replace('</svg>', animation + '</svg>');
-    saveSvgContent(content, 'urdumb-animated.svg')
+    saveSvgContent(content, 'nurds-animated.svg')
 }

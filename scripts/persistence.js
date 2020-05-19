@@ -68,9 +68,9 @@ function dumpPositions() {
                          'y': skaters[i].getAttribute('y') };
         if (isPlayer(skaters[i])) {
             thisPosition['currentlap'] =
-                getUrdumbAttr(skaters[i], 'currentlap');
+                getNurdsAttr(skaters[i], 'currentlap');
             thisPosition['stance'] =
-                getUrdumbAttr(skaters[i], 'stance');
+                getNurdsAttr(skaters[i], 'stance');
         }
         positions.push( thisPosition );
     }
@@ -121,13 +121,13 @@ function loadPositions(positions) {
             if (isNaN(currentLap)) {
                 currentLap = 0;
             }
-            setUrdumbAttr(skater, 'currentlap', currentLap);
+            setNurdsAttr(skater, 'currentlap', currentLap);
             // in case there are corrupt states saved in history
             var stance = positions[i]['stance'];
             if (stance != 'upright' && stance != 'down') {
                 stance = 'upright';
             }
-            setUrdumbAttr(skater, 'stance', stance);
+            setNurdsAttr(skater, 'stance', stance);
         }
     }
     checkPositions();

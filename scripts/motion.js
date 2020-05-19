@@ -45,8 +45,8 @@ function mouseDownOnBackground(evt) {
         mousePoint.x = evt.clientX;
         mousePoint.y = evt.clientY;
         boxPoint = mousePoint.matrixTransform(svg.getScreenCTM().inverse());
-        setUrdumbAttr(selectionRectangle, 'startX', boxPoint.x);
-        setUrdumbAttr(selectionRectangle, 'startY', boxPoint.y);
+        setNurdsAttr(selectionRectangle, 'startX', boxPoint.x);
+        setNurdsAttr(selectionRectangle, 'startY', boxPoint.y);
         selectionRectangle.setAttribute('x', boxPoint.x);
         selectionRectangle.setAttribute('y', boxPoint.y);
         selectionRectangle.setAttribute('width', 0);
@@ -111,27 +111,27 @@ function mouseMove(evt){
         mousePoint.x = evt.clientX;
         mousePoint.y = evt.clientY;
         boxPoint = mousePoint.matrixTransform(svg.getScreenCTM().inverse());
-        var urdumbX = getUrdumbAttr(selectionRectangle, 'startX');
-        var urdumbY = getUrdumbAttr(selectionRectangle, 'startY');
+        var nurdsX = getNurdsAttr(selectionRectangle, 'startX');
+        var nurdsY = getNurdsAttr(selectionRectangle, 'startY');
         // set x and width
-        if (urdumbX <= boxPoint.x) {
-            selectionRectangle.setAttribute('x', urdumbX);
+        if (nurdsX <= boxPoint.x) {
+            selectionRectangle.setAttribute('x', nurdsX);
             selectionRectangle.setAttribute('width',
-                                              boxPoint.x - urdumbX);
+                                              boxPoint.x - nurdsX);
         } else {
             selectionRectangle.setAttribute('x', boxPoint.x);
             selectionRectangle.setAttribute('width',
-                                              urdumbX - boxPoint.x);
+                                              nurdsX - boxPoint.x);
         }
         // set y and height
-        if (urdumbY <= boxPoint.y) {
-            selectionRectangle.setAttribute('y', urdumbY);
+        if (nurdsY <= boxPoint.y) {
+            selectionRectangle.setAttribute('y', nurdsY);
             selectionRectangle.setAttribute('height',
-                                              boxPoint.y - urdumbY);
+                                              boxPoint.y - nurdsY);
         } else {
             selectionRectangle.setAttribute('y', boxPoint.y);
             selectionRectangle.setAttribute('height',
-                                              urdumbY - boxPoint.y);
+                                              nurdsY - boxPoint.y);
         }
         // now we can update the selection with the new rectangle
         updateSelectionFromRectangle();
@@ -258,12 +258,12 @@ function updateLastPoint(evt) {
 }
 
 function toggleSkaterDown(skater) {
-    if (getUrdumbAttr(skater, 'stance') == 'upright') {
-        setUrdumbAttr(skater, 'stance', 'down');
-    } else if (getUrdumbAttr(skater, 'stance') == 'down') {
-        setUrdumbAttr(skater, 'stance', 'upright');
+    if (getNurdsAttr(skater, 'stance') == 'upright') {
+        setNurdsAttr(skater, 'stance', 'down');
+    } else if (getNurdsAttr(skater, 'stance') == 'down') {
+        setNurdsAttr(skater, 'stance', 'upright');
     } else {
-        console.log(getUrdumbAttr(skater, 'stance'));
+        console.log(getNurdsAttr(skater, 'stance'));
     }
     checkPositions();
     savePositionsToHistory();
@@ -274,12 +274,12 @@ function moveSkater(skater, x, y) {
     // if (! isOOB(skater) && y < 275) { // we're on the top straightaway
         var oldX = parseFloat(skater.getAttribute('x') );
         var oldY = parseFloat(skater.getAttribute('y') );
-        var currentLap = parseInt( getUrdumbAttr(skater, 'currentlap' ) );
+        var currentLap = parseInt( getNurdsAttr(skater, 'currentlap' ) );
         // pass the origin again in bounds
         if ( isPlayer(skater) && oldX >= 615 && x < 615 ) {
-            setUrdumbAttr(skater, 'currentlap', currentLap + 1);
+            setNurdsAttr(skater, 'currentlap', currentLap + 1);
         } else if ( isPlayer(skater) && oldX <= 615 && x > 615 ) {
-            setUrdumbAttr(skater, 'currentlap', currentLap - 1);
+            setNurdsAttr(skater, 'currentlap', currentLap - 1);
         }
     }
     skater.setAttribute('x', x );
@@ -333,7 +333,7 @@ function checkCollisions(skater) {
 function correctRho(skater, rho, skaterType) {
     if (skaterType == 'blocker') {
         // skater is already OOB
-        if ( getUrdumbAttr(skater, 'status') == 'OOB' ||
+        if ( getNurdsAttr(skater, 'status') == 'OOB' ||
              rho >= 130 - innerBoundaryToVirtualLine - skaterR ) {
             // skater will be OOB
             return rho * .95;
@@ -371,9 +371,9 @@ function skate(forward, faster) {
     for (var i=0; i < skaters.length; i++) {
         // downed skaters need time to stand back up
         if ( isPlayer(skaters[i]) &&
-             getUrdumbAttr(skaters[i], 'stance') == 'down') {
+             getNurdsAttr(skaters[i], 'stance') == 'down') {
             if (Math.random() < .05) {
-                setUrdumbAttr(skaters[i], 'stance', 'upright');
+                setNurdsAttr(skaters[i], 'stance', 'upright');
             }
         } else {
             if (memberOf(skaters[i], 'blocker') ) {

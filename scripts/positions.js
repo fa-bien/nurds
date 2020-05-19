@@ -35,16 +35,16 @@ function isOOB(skater) {
 
 function checkSkaterForOOB(skater) {
     if ( isOOB(skater) ) {
-         setUrdumbAttr(skater, 'status', "OOB");
+         setNurdsAttr(skater, 'status', "OOB");
     } else {
-         setUrdumbAttr(skater, 'status', "");
+         setNurdsAttr(skater, 'status', "");
     }
 }
 
 
 // origin is the beginning of the first straightaway (x = 615) on lap 0
 function distanceToOrigin(skater) {
-    var cl = parseInt(getUrdumbAttr(skater, 'currentlap'));
+    var cl = parseInt(getNurdsAttr(skater, 'currentlap'));
     // sometimes cl is NaN at load time due to poor cache management from the
     // browsers.
     if (! cl) {
@@ -95,16 +95,16 @@ function checkPositions() {
     // set downed skaters as such w.r.t. status purpose
     for (var i=0; i < skaters.length; i++) {
         if (isPlayer(skaters[i]) &&
-            getUrdumbAttr(skaters[i], 'stance') == 'down') {
-            setUrdumbAttr(skaters[i], 'status', 'down');
+            getNurdsAttr(skaters[i], 'stance') == 'down') {
+            setNurdsAttr(skaters[i], 'status', 'down');
         }
     }
     // case where there is more (or less) than one group: no pack
     if (groups.length != 1) {
         for (var i=0; i < blockers.length; i++) {
-            if ( getUrdumbAttr(blockers[i], 'status') != 'OOB' &&
-                 getUrdumbAttr(blockers[i], 'status') != 'down' ) {
-                setUrdumbAttr(blockers[i], 'status', 'nopack');
+            if ( getNurdsAttr(blockers[i], 'status') != 'OOB' &&
+                 getNurdsAttr(blockers[i], 'status') != 'down' ) {
+                setNurdsAttr(blockers[i], 'status', 'nopack');
             }
         }
         foremostInPlay = null;
@@ -115,16 +115,16 @@ function checkPositions() {
         // set pack skaters
         for (var i=0; i < packIds.length; i++) {
             var packBlocker = document.getElementById(packIds[i]);
-            setUrdumbAttr(packBlocker, 'status', 'pack');
+            setNurdsAttr(packBlocker, 'status', 'pack');
         }
         // now check for OOP
         for (var i=0; i < blockers.length; i++) {
-            if (getUrdumbAttr(blockers[i], 'status') != 'pack' &&
-                getUrdumbAttr(blockers[i], 'status') != 'OOB' &&
-                getUrdumbAttr(blockers[i], 'status') != 'down' &&
+            if (getNurdsAttr(blockers[i], 'status') != 'pack' &&
+                getNurdsAttr(blockers[i], 'status') != 'OOB' &&
+                getNurdsAttr(blockers[i], 'status') != 'down' &&
                 (! inPlay (blockers[i].id, packIds) )
                ) {
-                setUrdumbAttr(blockers[i], 'status', 'OOP');
+                setNurdsAttr(blockers[i], 'status', 'OOP');
             }
         }
         // determine engagement zone
@@ -145,9 +145,9 @@ function updateForemostRearmost() {
     var foremostDist = 0;
     var rearmostDist = 0;
     for (var i=0; i < blockers.length; i++) {
-        if (getUrdumbAttr(blockers[i], 'status') != 'OOP' &&
-            getUrdumbAttr(blockers[i], 'status') != 'OOB' &&
-            getUrdumbAttr(blockers[i], 'status') != 'down'
+        if (getNurdsAttr(blockers[i], 'status') != 'OOP' &&
+            getNurdsAttr(blockers[i], 'status') != 'OOB' &&
+            getNurdsAttr(blockers[i], 'status') != 'down'
            ) {
             var thisDist = distanceToOrigin(blockers[i]);
             if ( foremostInPlay === null ||
@@ -256,12 +256,12 @@ function inPlay(blockerId, packIds) {
 
 // true if the skater with that id is OOB
 function idIsOOB(id) {
-    return (getUrdumbAttr(blockersById[id], 'status') == 'OOB');
+    return (getNurdsAttr(blockersById[id], 'status') == 'OOB');
 }
 
 // true if the skater with that id is down
 function idIsDown(id) {
-    return (getUrdumbAttr(blockersById[id], 'stance') == 'down');
+    return (getNurdsAttr(blockersById[id], 'stance') == 'down');
 }
 
 // return groups of indices of skaters in proximity of each other
@@ -284,7 +284,7 @@ function eligibleGroups() {
     var currentGroup = [usefulBlockerIds[0]];
     var tmpBlocker = document.getElementById(usefulBlockerIds[0]);
     var currentTeams = {};
-    currentTeams[getUrdumbAttr(tmpBlocker, 'team')] = true;
+    currentTeams[getNurdsAttr(tmpBlocker, 'team')] = true;
     while (i < usefulBlockerIds.length - 1) {
         // no proximity: process previous group and start a new one
         if ( hipDistance( muForSkaterId[usefulBlockerIds[i]],
@@ -299,7 +299,7 @@ function eligibleGroups() {
         }
         tmpBlocker = document.getElementById(usefulBlockerIds[i+1]);
         currentGroup.push( usefulBlockerIds[i+1] );
-        currentTeams[getUrdumbAttr(tmpBlocker, 'team')] = true;
+        currentTeams[getNurdsAttr(tmpBlocker, 'team')] = true;
         i += 1;
     }
     // add last group to our list if it is eligible
@@ -321,7 +321,7 @@ function eligibleGroups() {
 function resetAllStatus() {
     for (var i=0; i < skaters.length; i++) {
         if (isPlayer(skaters[i])) {
-            setUrdumbAttr(skaters[i], 'status', '');
+            setNurdsAttr(skaters[i], 'status', '');
             for (var s=0; s < skaterStatuses.length; s++) {
                 if (memberOf(skaters[i], skaterStatuses[s]) ) {
                     removeClass(skaters[i], skaterStatuses[s]);

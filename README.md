@@ -1,4 +1,4 @@
-# urdumb
-Ultimate Roller Derby Ubiquitous Magnet Board
+# nurds
+New Ultimate Roller Derby Simulator
 
-This is the source code for URDUMB. Try it at http://www.viennarollerderby.org/urdumb/ and http://www.viennarollerderby.org/urdumb/urdumb.html
+This is the source code for NURDS. Try it at https://nurds.space

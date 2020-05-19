@@ -8,21 +8,19 @@
 // class membership operations
 
 // wrappers based on the main document's type
-function getUrdumbAttr(object, attribute) {
+function getNurdsAttr(object, attribute) {
     if (docType == 'SVG') {
-        return object.getAttributeNS('http://www.viennarollerderby.org/urdumb',
-                                     attribute);
+        return object.getAttributeNS('https://nurds.space', attribute);
     } else {
-        return object.getAttribute('urdumb:' + attribute);
+        return object.getAttribute('nurds:' + attribute);
     }
 }
 
-function setUrdumbAttr(object, attribute, value) {
+function setNurdsAttr(object, attribute, value) {
     if (docType == 'SVG') {
-        object.setAttributeNS('http://www.viennarollerderby.org/urdumb',
-                              attribute, value);
+        object.setAttributeNS('https://nurds.space', attribute, value);
     } else {
-        object.setAttribute('urdumb:' + attribute, value);
+        object.setAttribute('nurds:' + attribute, value);
     }
 }
 
@@ -72,7 +70,7 @@ function safeAddClass(object, className) {
 function updateSkaterClasses() {
     var status;
     for (var i=0; i < skaters.length; i++) {
-        status = getUrdumbAttr(skaters[i], 'status');
+        status = getNurdsAttr(skaters[i], 'status');
         if ( config['show' + status]) {
             addClass( skaters[i], status );
         }
@@ -83,7 +81,7 @@ function updateSkaterClasses() {
 function updateSkaterDescriptions() {
     var currentLap;
     for (var i=0; i < skaters.length; i++) {
-        currentLap = getUrdumbAttr(skaters[i], 'currentlap');
+        currentLap = getNurdsAttr(skaters[i], 'currentlap');
         skaters[i].setAttribute('title', 'lap ' + currentLap);
     }
 }
