@@ -27,6 +27,7 @@ body {
     top: 0%;
     width: 100%;
     height: 100%;
+    font-family: "Verdana";
     /* custom NURDS values */
     --pivot-stripe-height: 14;
     --skater-radius: 16;
