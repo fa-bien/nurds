@@ -1,4 +1,4 @@
-// Interactive Roller Derby track by Wonder Zebra (Vienna Rollergirls)
+// Interactive Roller Derby track by Wonder Zebra (Vienna Roller Derby)
 // August 2013.
 // Please send your requests and suggestions to wonderzbra@gmail.com
 

@@ -1,4 +1,4 @@
-// Interactive Roller Derby track by Wonder Zebra (Vienna Rollergirls)
+// Interactive Roller Derby track by Wonder Zebra (Vienna Roller Derby)
 // April 2013.
 // Please send your requests and suggestions to wonderzbra@gmail.com
 
@@ -121,6 +121,12 @@ function initialise() {
     // } else {
         timeOfLastSave = new Date().getTime();
     // }
+    
+    // BLM button
+    document.getElementById('BLMButton').
+        addEventListener('click', function(evt) {
+            window.open("https://blacklivesmatter.com/"); } );
+    
 }
 
 function endOfSession(event) {
