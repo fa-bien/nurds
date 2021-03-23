@@ -1,10 +1,3 @@
-// Interactive Roller Derby track by Fabien Tricoire (Vienna Roller Derby)
-// April 2013.
-// Please send your requests and suggestions to wonderzbra@gmail.com
-
-// This work is available under the GNU General Public License v3, which can
-// be found at http://www.gnu.org/licenses/gpl-3.0.txt
-
 // keyboard events
 
 function keyDown(evt) {
