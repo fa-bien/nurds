@@ -1,17 +1,3 @@
-// Interactive Roller Derby track by Wonder Zebra (Vienna Rollergirls)
-// April 2013.
-// Please send your requests and suggestions to wonderzbra@gmail.com
-
-// This work is available under the GNU General Public License v3, which can
-// be found at http://www.gnu.org/licenses/gpl-3.0.txt
-
-// This means you can use it, modify it and redistribute it as long as you
-// also provide the source code of the provided software and of any
-// derivative work based on it, and as long as you cite the original authors
-// of the program (copyright information). Other restrictions apply.
-// The most important restriction is that you cannot distribute proprietay
-// software based on the provided programs and libraries.
-
 function updateNumbers() {
     var numbers = document.getElementsByClassName('blockerNumber');
     if (config['shownumbers']) {
@@ -121,6 +107,12 @@ function initialise() {
     // } else {
         timeOfLastSave = new Date().getTime();
     // }
+    
+    // // Political advertisement button
+    // document.getElementById('BLMButton').
+    //     addEventListener('click', function(evt) {
+    //         window.open("https://blacklivesmatter.com/"); } );
+    
 }
 
 function endOfSession(event) {

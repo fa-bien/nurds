@@ -1,10 +1,3 @@
-// Interactive Roller Derby track by Wonder Zebra (Vienna Rollergirls)
-// August 2013.
-// Please send your requests and suggestions to wonderzbra@gmail.com
-
-// This work is available under the GNU General Public License v3, which can
-// be found at http://www.gnu.org/licenses/gpl-3.0.txt
-
 // export-to-image functions: new version 2019-05-23
 // most modern browsers won't open data URIs so we use a blob instead
 

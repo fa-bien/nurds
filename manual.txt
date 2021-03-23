@@ -1,7 +1,6 @@
-Interactive Derby Track!
-By Wonder Zebra (Vienna Rollergirls), April 2013
+New Ultimate Roller Derby Simulator!
+By Fabien Tricoire (Vienna Roller Derby), project originated April 2013
 Contact, feedback, feature requests: wonderzbra@gmail.com
-
 
 Skaters are represented by circular shapes. They can be dragged with the mouse
 or finger and push other skaters.
