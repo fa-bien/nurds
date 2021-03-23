@@ -1,5 +1,5 @@
 New Ultimate Roller Derby Simulator!
-By Wonder Zebra (Vienna Roller Derby), project originated April 2013
+By Fabien Tricoire (Vienna Roller Derby), project originated April 2013
 Contact, feedback, feature requests: wonderzbra@gmail.com
 
 Skaters are represented by circular shapes. They can be dragged with the mouse

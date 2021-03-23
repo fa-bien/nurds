@@ -1,4 +1,4 @@
-// Interactive Roller Derby track by Wonder Zebra (Vienna Roller Derby)
+// Interactive Roller Derby track by Fabien Tricoire (Vienna Roller Derby)
 // August 2013.
 // Please send your requests and suggestions to wonderzbra@gmail.com
 
