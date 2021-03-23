@@ -108,10 +108,10 @@ function initialise() {
         timeOfLastSave = new Date().getTime();
     // }
     
-    // BLM button
-    document.getElementById('BLMButton').
-        addEventListener('click', function(evt) {
-            window.open("https://blacklivesmatter.com/"); } );
+    // // Political advertisement button
+    // document.getElementById('BLMButton').
+    //     addEventListener('click', function(evt) {
+    //         window.open("https://blacklivesmatter.com/"); } );
     
 }
 
