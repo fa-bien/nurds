@@ -327,14 +327,39 @@ function eligibleGroupsIgnoringLaps() {
         return false;
     }
     let validGroups = groups.filter(isValidGroup);
-    // 4. Return largest eligible groups
+    // 4. Keep largest eligible groups
     let largest = validGroups[0] ? validGroups[0].length : 0;
     for (let i=1; i < validGroups.length; i++) {
         if (validGroups[i].length > largest) {
             largest = validGroups[i].length;
         }
     }
-    return validGroups.filter(group => group.length == largest);
+    let keptGroups = validGroups.filter(group => group.length == largest);
+    // 5. If there is a unique kept group of size > 1, i.e. a pack, sort the
+    // skaters in it from rearmost to frontmost
+    if (keptGroups.length == 1 && keptGroups[0].length > 1) {
+        // sort skaters while ignoring lap count:
+        // 1. sort them by mu coordinate
+        var sortedIds = keptGroups[0].sort( function(x, y) {
+            return parseFloat(muForSkaterId[x])
+                - parseFloat(muForSkaterId[y]) } );
+        // 2. find the break (if any) between two skaters and splice accordingly
+        let i=0;
+        while (i < sortedIds.length) {
+            if (hipDistanceIgnoringLaps(muForSkaterId[sortedIds[i]],
+                                        muForSkaterId[sortedIds[i+1]]) > 100) {
+                // break found
+                sortedIds = sortedIds.slice(i+1).concat(sortedIds.slice(0,i+1));
+                break;
+            } else {
+                i += 1;
+            }
+        }
+        return [sortedIds];
+    } else { 
+        // Otherwise, simply return kept groups
+        return keptGroups
+    }
 }
 
 // This version uses the fact that we are counting laps to work in O(n)
