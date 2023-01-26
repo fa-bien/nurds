@@ -109,9 +109,9 @@ function initialise() {
     // }
     
     // // Political advertisement button
-    // document.getElementById('BLMButton').
+    // document.getElementById('PolButton').
     //     addEventListener('click', function(evt) {
-    //         window.open("https://blacklivesmatter.com/"); } );
+    //         window.open("https://"); } );
     
 }
 
