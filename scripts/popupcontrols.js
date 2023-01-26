@@ -80,6 +80,9 @@ function addOverlayListeners() {
     document.getElementById('checkbox-showzebras').
         addEventListener('click',
                          function(evt) { toggleZebras(); } );
+    document.getElementById('checkbox-countlaps').
+        addEventListener('click',
+                         function(evt) { toggleLapCount(); } );
     document.getElementById('checkbox-shownumbers').
         addEventListener('click',
                          function(evt) { toggleNumbers(); } );

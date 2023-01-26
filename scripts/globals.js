@@ -89,6 +89,7 @@ defaultConfig = {
     'showEZ': true,
     'showmiddleline': false,
     'showzebras': true,
+    'countlaps': false,
     'teamAcolour': "#ffbb00",
     'teamBcolour': "#bb00bb",
     'theme': 'classic',

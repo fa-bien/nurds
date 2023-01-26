@@ -54,17 +54,29 @@ function distanceToOrigin(skater) {
 // d1 is the mu coordinate of skater 1 using track coordinates
 // d2 is the mu coordinate of skater 2
 function hipDistance(d1, d2) {
-    // if (d1 >= d2) {
-    //     return Math.min(d1 - d2, Math.abs(d2 + trackLength - d1));
-    // } else {
-    //     return Math.min(d2 - d1, Math.abs(d1 + trackLength - d2));
-    // }
+    if (config['countlaps']) {
+        return hipDistanceCountingLaps(d1, d2);
+    } else {
+        return hipDistanceIgnoringLaps(d1, d2);
+    }
+}
+
+// hip distance using distance from origin, i.e. two nearby skaters
+// on different laps are one lap apart 
+// d1 and d2 represent the distance from the origin of two skaters
+function hipDistanceCountingLaps(d1, d2) {
     return Math.abs(d1-d2);
 }
 
-// are these two skaters in proximity?
-function nearEachOther(skater1, skater2) {
-    return ( hipDistance(skater1, skater2) <= 100 );
+// hip distance ignoring thefact that skaters may be on different laps
+// d1 and d2 represent the distance from the origin of two skaters
+function hipDistanceIgnoringLaps(d1, d2) {
+    let d1one = d1 % trackLength, d2one = d2 % trackLength
+    if (d1one >= d2one) {
+        return Math.min(d1one - d2one, Math.abs(d2one + trackLength - d1one));
+    } else {
+        return Math.min(d2one - d1one, Math.abs(d1one + trackLength - d2one));
+    }
 }
 
 function checkAllOOB() {
@@ -261,6 +273,73 @@ function idIsDown(id) {
 // useful for defining the pack
 // pre-condition: muForSkaterId is up to date
 function eligibleGroups() {
+    if (config['countlaps']) {
+        return eligibleGroupsCountingLaps();
+    } else {
+        return eligibleGroupsIgnoringLaps();
+    }
+}
+
+// This version ignores laps therefore has to consider distances between all
+// skaters, worst case in O(n^2) :(
+function eligibleGroupsIgnoringLaps() {
+    // useful here: can these two groups be merged?
+    function canBeMerged(group1, group2) {
+        for (let i=0; i < group1.length; i++) {
+            for (let j=0; j < group2.length; j++) {
+                if (hipDistance(muForSkaterId[group1[i]],
+                                muForSkaterId[group2[j]]) <= 100) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    // 1. Each eligible skater is a group
+    let groups = [];
+    var usefulBlockerIds = blockerIds.filter(
+        function(element, index, array) { return ! (idIsOOB(element)
+                                                    || idIsDown(element) ) } );
+    for (let i=0, n=usefulBlockerIds.length; i < n; i++) {
+        groups[i] = [usefulBlockerIds[i]];
+    }
+    // 2. From last to first group: try to merge this group with another
+    let currentGroup = groups.length - 1;
+    while (currentGroup > 0) {
+        for (let targetGroup = 0; targetGroup < currentGroup; targetGroup++) {
+            if (canBeMerged(groups[targetGroup], groups[currentGroup])) {
+                groups[targetGroup] =
+                    groups[targetGroup].concat(groups[currentGroup]);
+                groups[currentGroup] = []
+                break;
+            }
+        }
+        currentGroup -= 1;
+    }
+    // 3. At this point all groups are maximal, keep eligible ones
+    function isValidGroup(group) {
+        if (group.length <= 1) { return false; }
+        const teams = new Set()
+        for (let i=0; i < group.length; i++) {
+            teams.add(getNurdsAttr(document.getElementById(group[i]), 'team'));
+            if (teams.size > 1) { return true; }
+        }
+        return false;
+    }
+    let validGroups = groups.filter(isValidGroup);
+    // 4. Return largest eligible groups
+    let largest = validGroups[0] ? validGroups[0].length : 0;
+    for (let i=1; i < validGroups.length; i++) {
+        if (validGroups[i].length > largest) {
+            largest = validGroups[i].length;
+        }
+    }
+    return validGroups.filter(group => group.length == largest);
+}
+
+// This version uses the fact that we are counting laps to work in O(n)
+// instead of O(n^2)
+function eligibleGroupsCountingLaps() {
     var groups=[];
     // sort blockers according to their mu-position on the track
     var sortedBlockerIds = blockerIds.sort( function(x, y) {

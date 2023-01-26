@@ -196,6 +196,15 @@ function toggleMiddleLine() {
     }
 }
 
+function toggleLapCount() {
+    toggleConfigValue('countlaps');
+    checkPositions();
+    updateContextMenu('countlaps');
+    if ( document.getElementById('popupGUI') ) {
+        updateCheckBox('countlaps');
+    }
+}
+
 function updateExtras() {
     updateNumbers();
     updateZebras();
