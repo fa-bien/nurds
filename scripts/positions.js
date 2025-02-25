@@ -280,6 +280,15 @@ function eligibleGroups() {
     }
 }
 
+// This function always returns a value in [0, trackLength]
+function singleLapMu(skaterId) {
+    let mu = muForSkaterId[skaterId];
+    while (mu < 0) {
+        mu += trackLength;
+    }
+    return mu % trackLength;
+}
+
 // This version ignores laps therefore has to consider distances between all
 // skaters, worst case in O(n^2) :(
 function eligibleGroupsIgnoringLaps() {
@@ -340,14 +349,21 @@ function eligibleGroupsIgnoringLaps() {
     if (keptGroups.length == 1 && keptGroups[0].length > 1) {
         // sort skaters while ignoring lap count:
         // 1. sort them by mu coordinate
+        let singleLapMuValue = {};
+        keptGroups[0].forEach((skaterId) => {
+            singleLapMuValue[skaterId] = singleLapMu(skaterId);
+        });
         var sortedIds = keptGroups[0].sort( function(x, y) {
-            return parseFloat(muForSkaterId[x])
-                - parseFloat(muForSkaterId[y]) } );
-        // 2. find the break (if any) between two skaters and splice accordingly
+            return parseFloat(singleLapMuValue[x])
+                - parseFloat(singleLapMuValue[y]) } );
+        // 2. find the smallest break (if any) between two skaters and splice
+        // accordingly
         let i=0;
-        while (i < sortedIds.length) {
-            if (hipDistanceIgnoringLaps(muForSkaterId[sortedIds[i]],
-                                        muForSkaterId[sortedIds[i+1]]) > 100) {
+        while (i < sortedIds.length - 1) {
+            let dist = hipDistanceIgnoringLaps(
+                singleLapMuValue[sortedIds[i]], singleLapMuValue[sortedIds[i+1]]
+            );
+            if (dist > 100){
                 // break found
                 sortedIds = sortedIds.slice(i+1).concat(sortedIds.slice(0,i+1));
                 break;
@@ -358,7 +374,7 @@ function eligibleGroupsIgnoringLaps() {
         return [sortedIds];
     } else { 
         // Otherwise, simply return kept groups
-        return keptGroups
+        return keptGroups;
     }
 }
 
