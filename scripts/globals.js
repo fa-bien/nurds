@@ -13,8 +13,8 @@ var currentObject = 0;
 var element = document.getElementById('skater');
 var skaterSW = parseFloat(window.getComputedStyle(element).getPropertyValue('stroke-width'));
 // used multiple times for pack detection
-var blockers = document.getElementsByClassName('blocker');
-var jammers = document.getElementsByClassName('jammer');
+var blockers = Array.from(document.getElementsByClassName('blocker'));
+var jammers = Array.from(document.getElementsByClassName('jammer'));
 var blockerIds = [];
 var blockersById = {};
 for (var i=0; i < blockers.length; i++) {
@@ -23,6 +23,7 @@ for (var i=0; i < blockers.length; i++) {
 }
 // used multiple times
 var skaters = document.getElementsByClassName('movable');
+var players = blockers.concat(jammers);
 // used all the time to make a selection
 var selectionRectangle = document.getElementById('selectionRectangle');
 var background = document.getElementById('background');

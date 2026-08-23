@@ -139,9 +139,9 @@ function checkPositions() {
     }
     // now update the class list of each skater to reflect graphically
     // their status
-    updateSkaterClasses();
+    updateSkaterClasses(skaters);
     // also update their description
-    updateSkaterDescriptions();
+    updateSkaterDescriptions(players);
 }
 
 function updateForemostRearmost() {
