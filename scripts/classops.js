@@ -60,22 +60,25 @@ function safeAddClass(object, className) {
 }
 
 // update the class list of each skater to match their status
-function updateSkaterClasses() {
-    var status;
-    for (var i=0; i < skaters.length; i++) {
-        status = getNurdsAttr(skaters[i], 'status');
-        if ( config['show' + status]) {
-            addClass( skaters[i], status );
+function updateSkaterClasses(skatersToUpdate) {
+    for (const skater of skatersToUpdate) {
+        let status = getNurdsAttr(skater, 'status');
+        if (config['show' + status]) {
+            addClass(skater, status);
         }
     }
 }
 
 // update the description of each skater
-function updateSkaterDescriptions() {
-    var currentLap;
-    for (var i=0; i < skaters.length; i++) {
-        currentLap = getNurdsAttr(skaters[i], 'currentlap');
-        skaters[i].setAttribute('title', 'lap ' + currentLap);
+function updateSkaterDescriptions(skatersToUpdate) {
+    for (skater of skatersToUpdate) {
+        // Current convention: each skater has exactly one child, which is its
+        // title element. We use it for the tooltip showing the lap count.
+        let titleChild = skater.children[0];
+        let newTitle = config['countlaps'] ? 'lap ' + getNurdsAttr(skater, 'currentlap') : "";
+        if (titleChild.textContent != newTitle) {
+            titleChild.textContent = newTitle;
+        }
     }
 }
 
